@@ -62,7 +62,9 @@ public class AchievementServiceImpl implements AchievementService{
     @Override
     public boolean deleteAchievement(long id) throws AchievementNotFoundException {
         Achievement achievement = achievementRepository.findById(id).orElseThrow(AchievementNotFoundException::new);
-        //TODO: Comprobar que no depende de ningun tracker
+        if(!achievement.getTrackerList().isEmpty()){
+            return false;
+        }
 
         achievementRepository.delete(achievement);
         return true;

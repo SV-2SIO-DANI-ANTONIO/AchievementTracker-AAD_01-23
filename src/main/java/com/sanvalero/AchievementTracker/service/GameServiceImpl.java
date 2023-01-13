@@ -54,7 +54,9 @@ public class GameServiceImpl implements GameService{
     @Override
     public boolean deleteGame(long id) throws GameNotFoundException {
         Game game = gameRepository.findById(id).orElseThrow(GameNotFoundException::new);
-        //TODO: Comprobar si hay logros que dependan del juego antes de borrar
+        if(!game.getAchievementList().isEmpty()){
+            return false;
+        }
 
         gameRepository.delete(game);
         return true;

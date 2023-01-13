@@ -55,8 +55,9 @@ public class UserServiceImpl implements UserService{
     @Override
     public boolean deleteUser(long id) throws UserNotFoundException {
         User user = userRepository.findById(id).orElseThrow(UserNotFoundException::new);
-        //TODO: Comprobar que no hay trackers que dependan del usuario
-
+        if(!user.getTrackerList().isEmpty()){
+            return false;
+        }
         userRepository.delete(user);
         return true;
     }
