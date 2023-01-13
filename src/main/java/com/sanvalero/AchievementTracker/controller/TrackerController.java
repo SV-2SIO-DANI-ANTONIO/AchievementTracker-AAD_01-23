@@ -13,11 +13,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
+
+import static com.sanvalero.AchievementTracker.util.ErrorExceptionUtil.getErrorExceptionResponseEntity;
 
 @RestController
 public class TrackerController {
@@ -69,6 +73,46 @@ public class TrackerController {
         Tracker tracker = trackerService.modifyTracker(id,trackerDTO);
         logger.info("END PUT Tracker");
         return ResponseEntity.status(HttpStatus.OK).body(tracker);
+    }
+
+    @ExceptionHandler(TrackerNotFoundException.class)
+    public ResponseEntity<ErrorException> handleInventoryNotFoundException(TrackerNotFoundException tnfe){
+        logger.error("Tracker no encontrado");
+        ErrorException errorException = new ErrorException(404, tnfe.getMessage());
+        return new ResponseEntity<>(errorException, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorException> handleInventoryNotFoundException(UserNotFoundException unfe){
+        logger.error("User no encontrado");
+        ErrorException errorException = new ErrorException(404, unfe.getMessage());
+        return new ResponseEntity<>(errorException, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(AchievementNotFoundException.class)
+    public ResponseEntity<ErrorException> handleInventoryNotFoundException(AchievementNotFoundException anfe){
+        logger.error("Achievement no encontrado");
+        ErrorException errorException = new ErrorException(404, anfe.getMessage());
+        return new ResponseEntity<>(errorException, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<ErrorException> handleConstraintViolationException(ConstraintViolationException cve){
+        logger.error("Restricciones violadas");
+        return getErrorExceptionResponseEntity(cve);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorException> handleException(Exception e){
+        logger.error("Error Interno ", e.getMessage());
+        ErrorException error = new ErrorException(500, "Ha habido algun error inesperado");
+        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorException> handleMethodArgumentNotValidException(MethodArgumentNotValidException manve){
+        logger.error("Datos introducidos erroneos");
+        return getErrorExceptionResponseEntity(manve);
     }
 
 }
