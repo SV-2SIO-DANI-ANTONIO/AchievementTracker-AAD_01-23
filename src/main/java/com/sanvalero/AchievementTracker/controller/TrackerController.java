@@ -68,7 +68,7 @@ public class TrackerController {
     }
 
     @PutMapping("/trackers/{id}")
-    public ResponseEntity<Tracker> modifyTracker(@PathVariable long id, @RequestBody TrackerDTO trackerDTO) throws UserNotFoundException, TrackerNotFoundException, AchievementNotFoundException {
+    public ResponseEntity<Tracker> modifyTracker(@PathVariable long id,@Valid @RequestBody TrackerDTO trackerDTO) throws UserNotFoundException, TrackerNotFoundException, AchievementNotFoundException {
         logger.info("PUT Tracker");
         Tracker tracker = trackerService.modifyTracker(id,trackerDTO);
         logger.info("END PUT Tracker");

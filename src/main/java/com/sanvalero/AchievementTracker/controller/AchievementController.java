@@ -70,7 +70,7 @@ public class AchievementController {
     }
 
     @PutMapping("/achievements/{id}")
-    public ResponseEntity<Achievement> modifyAchievement(@PathVariable long id, @RequestBody AchievementDTO achievementDTO) throws AchievementNotFoundException, GameNotFoundException {
+    public ResponseEntity<Achievement> modifyAchievement(@PathVariable long id,@Valid @RequestBody AchievementDTO achievementDTO) throws AchievementNotFoundException, GameNotFoundException {
         logger.info("PUT Achievement");
         Achievement achievement = achievementService.updateAchievement(id, achievementDTO);
         logger.info("END PUT Achievement");
