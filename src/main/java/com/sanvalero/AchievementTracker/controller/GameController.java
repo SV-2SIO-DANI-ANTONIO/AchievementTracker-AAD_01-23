@@ -32,7 +32,7 @@ public class GameController {
             return ResponseEntity.ok(gameService.findAll());
         } else {
             if(data.containsKey("name")){
-                List<Game> games = gameService.findByName(data.get("name)"));
+                List<Game> games = gameService.findByName(data.get("name"));
                 return ResponseEntity.ok(games);
             }
         }

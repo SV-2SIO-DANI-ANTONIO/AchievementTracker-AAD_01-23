@@ -19,6 +19,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
+@RestController
 public class AchievementController {
 
     @Autowired
@@ -34,7 +35,7 @@ public class AchievementController {
             return ResponseEntity.ok(achievementService.findAll());
         } else {
             if(data.containsKey("name")){
-                List<Achievement> achievements = achievementService.findByName(data.get("name)"));
+                List<Achievement> achievements = achievementService.findByName(data.get("name"));
                 return ResponseEntity.ok(achievements);
             }
         }
