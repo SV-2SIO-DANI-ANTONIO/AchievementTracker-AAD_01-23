@@ -1,5 +1,6 @@
 package com.sanvalero.AchievementTracker.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,6 +36,7 @@ public class Achievement {
 
     @ToString.Exclude
     @OneToMany(mappedBy =  "trackAchievement")
+    @JsonBackReference(value = "trackerId_tracker")
     private List<Tracker> trackerList;
 
 }
