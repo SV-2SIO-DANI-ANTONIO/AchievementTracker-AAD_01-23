@@ -49,7 +49,7 @@ public class AchievementController {
     }
 
     @GetMapping("/achievements/same")
-    public ResponseEntity<List<Achievement>> getSameAchievements(@RequestParam Map<String, String> data) throws AchievementNotFoundException, UserNotFoundException {
+    public ResponseEntity<List<Achievement>> getSameAchievements(@RequestParam Map<String, String> data) throws UserNotFoundException {
         logger.info("GET Same Achievements");
         if(data.containsKey("id1") && data.containsKey("id2")){
             List<Achievement> achievements = achievementService.sameAchievement(Long.parseLong(data.get("id1")), Long.parseLong(data.get("id2")));
