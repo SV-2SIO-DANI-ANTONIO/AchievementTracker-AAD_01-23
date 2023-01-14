@@ -1,0 +1,544 @@
+{
+	"info": {
+		"_postman_id": "b37ac9de-d088-41fa-bac9-7110c8ce2185",
+		"name": "AchievementTracker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24042828"
+	},
+	"item": [
+		{
+			"name": "Game",
+			"item": [
+				{
+					"name": "games",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/games",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"games"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "games?name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/games/?name=Ha",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"games",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Ha"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "games",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Halo\",\r\n    \"description\":\"Pues Halo\",\r\n    \"genre\":\"FPS\",\r\n    \"price\":60.0,\r\n    \"rating\":5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/games",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"games"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "games/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Halo 2\",\r\n    \"description\":\"Halo 2 es un videojuego de disparos en primera persona desarrollado por Bungie Studios y lanzado para la consola Xbox en 2004.​ Es la segunda entrega en la franquicia de Halo y su trama continúa los sucesos relatados en Halo: Combat Evolved.\",\r\n    \"genre\":\"Shooter\",\r\n    \"price\":20,\r\n    \"rating\":4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/games/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"games",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "games/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/games/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"games",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Achievement",
+			"item": [
+				{
+					"name": "achievements",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/achievements",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"achievements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "achievements?name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/achievements?name=Legend",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"achievements"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Legend"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "achievements/same?id1&?id2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/achievements/same?id1=1&id2=33",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"achievements",
+								"same"
+							],
+							"query": [
+								{
+									"key": "id1",
+									"value": "1"
+								},
+								{
+									"key": "id2",
+									"value": "33"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "achievements",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Normal\",\r\n    \"description\":\"Pasate el juego en dificultad Normal\",\r\n    \"achievementGameId\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/achievements",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"achievements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "achievements/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Legendary\",\r\n    \"description\":\"Legendario\",\r\n    \"achievementGameId\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/achievements/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"achievements",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "achievements/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/achievements/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"achievements",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users?name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/users?name=Ant",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Ant"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Antonio\",\r\n    \"username\":\"SrAntonio\",\r\n    \"password\":\"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"AntonioTest\",\r\n    \"username\":\"Toska\",\r\n    \"password\":\"1111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/users/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/users/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tracker",
+			"item": [
+				{
+					"name": "trackers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/trackers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"trackers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "trackers?userID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/trackers?userID=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"trackers"
+							],
+							"query": [
+								{
+									"key": "userID",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "trackers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"achievementId\":34,\r\n    \"userId\":1,\r\n    \"achieved\":false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/trackers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"trackers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "trackers/achieved/{id}",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/trackers/achieved/33",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"trackers",
+								"achieved",
+								"33"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "trackers/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"achievementId\":1,\r\n    \"userId\":1,\r\n    \"achieved\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/trackers/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"trackers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "trackers/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/trackers/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"trackers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
