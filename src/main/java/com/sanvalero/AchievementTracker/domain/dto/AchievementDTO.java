@@ -22,6 +22,5 @@ public class AchievementDTO {
     private String description;
 
     @NotNull(message = "El ID es obligatorio")
-    @NotBlank(message = "EL ID no puede estar en blanco")
     private long achievementGameId;
 }

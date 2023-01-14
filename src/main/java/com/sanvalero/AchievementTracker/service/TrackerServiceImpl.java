@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -91,5 +92,13 @@ public class TrackerServiceImpl implements TrackerService{
         tracker.setTrackAchievement(achievement);
 
         return trackerRepository.save(tracker);
+    }
+
+    @Override
+    public Tracker achieved(long id) throws TrackerNotFoundException {
+        Tracker tracker = trackerRepository.findById(id).orElseThrow(TrackerNotFoundException::new);
+        tracker.setAchieved(true);
+        tracker.setDateAchieved(new Date());
+        return tracker;
     }
 }

@@ -16,4 +16,5 @@ public interface TrackerService {
     Tracker addTracker(TrackerDTO trackerDTO) throws AchievementNotFoundException, UserNotFoundException;
     boolean deleteTracker(long id) throws TrackerNotFoundException;
     Tracker modifyTracker(long id, TrackerDTO trackerDTO) throws TrackerNotFoundException, AchievementNotFoundException, UserNotFoundException;
+    Tracker achieved(long id) throws TrackerNotFoundException;
 }

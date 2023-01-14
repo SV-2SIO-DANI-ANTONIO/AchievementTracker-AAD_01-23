@@ -6,6 +6,7 @@ import com.sanvalero.AchievementTracker.domain.Tracker;
 import com.sanvalero.AchievementTracker.domain.dto.AchievementDTO;
 import com.sanvalero.AchievementTracker.exception.AchievementNotFoundException;
 import com.sanvalero.AchievementTracker.exception.GameNotFoundException;
+import com.sanvalero.AchievementTracker.exception.UserNotFoundException;
 import com.sanvalero.AchievementTracker.repository.AchievementRepository;
 import com.sanvalero.AchievementTracker.repository.GameRepository;
 import org.aspectj.weaver.tools.Trace;
@@ -82,5 +83,11 @@ public class AchievementServiceImpl implements AchievementService{
         achievement.setGameAchievement(game);
 
         return achievementRepository.save(achievement);
+    }
+
+    @Override
+    public List<Achievement> sameAchievement(long idUser1, long idUser2) throws UserNotFoundException {
+        List<Achievement> achievements = achievementRepository.sameAchievement(idUser1, idUser2);
+        return achievements;
     }
 }

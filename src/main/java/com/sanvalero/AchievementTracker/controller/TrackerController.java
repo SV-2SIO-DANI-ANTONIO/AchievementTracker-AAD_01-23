@@ -75,6 +75,13 @@ public class TrackerController {
         return ResponseEntity.status(HttpStatus.OK).body(tracker);
     }
 
+    @PostMapping("/trackers/achieved/{id}")
+    public ResponseEntity<Tracker> achieved(@PathVariable long id) throws TrackerNotFoundException {
+        logger.info("PUT Tracker Achieved");
+        Tracker tracker = trackerService.achieved(id);
+        return ResponseEntity.status(HttpStatus.OK).body(tracker);
+    }
+
     @ExceptionHandler(TrackerNotFoundException.class)
     public ResponseEntity<ErrorException> handleInventoryNotFoundException(TrackerNotFoundException tnfe){
         logger.error("Tracker no encontrado");

@@ -3,6 +3,7 @@ package com.sanvalero.AchievementTracker.repository;
 import com.sanvalero.AchievementTracker.domain.Achievement;
 import com.sanvalero.AchievementTracker.domain.Tracker;
 import com.sanvalero.AchievementTracker.domain.User;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

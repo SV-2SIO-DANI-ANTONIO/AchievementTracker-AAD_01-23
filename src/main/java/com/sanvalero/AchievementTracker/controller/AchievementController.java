@@ -7,6 +7,7 @@ import com.sanvalero.AchievementTracker.domain.dto.GameDTO;
 import com.sanvalero.AchievementTracker.exception.AchievementNotFoundException;
 import com.sanvalero.AchievementTracker.exception.ErrorException;
 import com.sanvalero.AchievementTracker.exception.GameNotFoundException;
+import com.sanvalero.AchievementTracker.exception.UserNotFoundException;
 import com.sanvalero.AchievementTracker.service.AchievementService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,6 +43,17 @@ public class AchievementController {
                 List<Achievement> achievements = achievementService.findByName(data.get("name"));
                 return ResponseEntity.ok(achievements);
             }
+        }
+        logger.error("BAD REQUEST");
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping("/achievements/same")
+    public ResponseEntity<List<Achievement>> getSameAchievements(@RequestParam Map<String, String> data) throws AchievementNotFoundException, UserNotFoundException {
+        logger.info("GET Same Achievements");
+        if(data.containsKey("id1") && data.containsKey("id2")){
+            List<Achievement> achievements = achievementService.sameAchievement(Long.parseLong(data.get("id1")), Long.parseLong(data.get("id2")));
+            return ResponseEntity.ok(achievements);
         }
         logger.error("BAD REQUEST");
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -98,7 +110,7 @@ public class AchievementController {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorException> handleException(Exception e){
-        logger.error("Error Interno ", e.getMessage());
+        logger.error("Error Interno " + e.getMessage());
         ErrorException error = new ErrorException(500, "Ha habido algun error inesperado");
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }

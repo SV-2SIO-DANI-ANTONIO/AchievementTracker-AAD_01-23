@@ -13,11 +13,9 @@ import java.util.Date;
 @NoArgsConstructor
 public class TrackerDTO {
     @NotNull(message = "El ID es obligatorio")
-    @NotBlank(message = "EL ID no puede estar en blanco")
     private long achievementId;
 
     @NotNull(message = "El ID es obligatorio")
-    @NotBlank(message = "EL ID no puede estar en blanco")
     private long userId;
 
     private boolean achieved;
